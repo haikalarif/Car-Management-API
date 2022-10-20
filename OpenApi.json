@@ -1,0 +1,752 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "Car Management API",
+    "description": "Open API Documentation",
+    "contact": {}
+  },
+  "host": "localhost:3000",
+  "basePath": "/api/v1",
+  "securityDefinitions": {},
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/register": {
+      "post": {
+        "summary": "Registrasi Member",
+        "description": "Registrasi Member",
+        "tags": [
+          "Auth"
+        ],
+        "operationId": "Registrasi",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/RegistrasiRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Register Successfully",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "example": "Created"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Register Gagal",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Register Gagal"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/login": {
+      "post": {
+        "summary": "Login",
+        "description": "Login",
+        "tags": [
+          "Auth"
+        ],
+        "operationId": "Login",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/LoginRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Login Successfully",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "example": "Login Success"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Email tidak ditemukan"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Password worng!"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/whoami": {
+      "get": {
+        "summary": "Who Am I",
+        "description": "Who Am I",
+        "tags": [
+          "Auth"
+        ],
+        "operationId": "whoAmI",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Who Am I?",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/list-users": {
+      "get": {
+        "summary": "(Akses hanya untuk Super Admin)",
+        "description": "GET - List All Users (Akses hanya untuk Super Admin)",
+        "tags": [
+          "Auth"
+        ],
+        "operationId": "GET-ListAllUsers(AkseshanyauntukSuperAdmin)",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {}
+          },
+          "400": {
+            "description": "Failed",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/list-admin": {
+      "get": {
+        "summary": "GET - List All Admin",
+        "description": "GET - List All Admin",
+        "tags": [
+          "Auth"
+        ],
+        "operationId": "GET-ListAllAdmin",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {}
+          },
+          "400": {
+            "description": "Failed",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/list-member": {
+      "get": {
+        "summary": "GET - List Member",
+        "description": "GET - List Member",
+        "tags": [
+          "Auth"
+        ],
+        "operationId": "GET-ListMember",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {}
+          },
+          "400": {
+            "description": "Failed",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/list-typeuser": {
+      "get": {
+        "summary": "GET - List All Roles",
+        "description": "GET - List All Roles",
+        "tags": [
+          "Auth"
+        ],
+        "operationId": "GET-ListAllRoles",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {}
+          },
+          "400": {
+            "description": "Failed",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/add-admin": {
+      "post": {
+        "summary": "(Akses hanya untuk Super Admin)",
+        "description": "Create Admin - (Akses hanya untuk Super Admin)",
+        "tags": [
+          "Auth"
+        ],
+        "operationId": "CreateAdmin-(AkseshanyauntukSuperAdmin)",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/CreateAdmin-%28AkseshanyauntukSuperAdmin%29Request"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Create Successfully",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/cars": {
+      "get": {
+        "summary": "GET - List Cars",
+        "tags": [
+          "Cars"
+        ],
+        "operationId": "GET-ListCars",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {}
+          },
+          "400": {
+            "description": "Failed",
+            "headers": {}
+          },
+          "404": {
+            "description": "Car is Empty, Please Add Cars",
+            "headers": {}
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "summary": "(Akses hanya untuk Super Admin dan Admin)",
+        "description": "Create Car - (Akses hanya untuk Super Admin dan Admin)",
+        "tags": [
+          "Cars"
+        ],
+        "operationId": "CreateCar-(AkseshanyauntukSuperAdmindanAdmin)",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "plate",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "image",
+            "in": "formData",
+            "required": true,
+            "type": "file",
+            "description": ""
+          },
+          {
+            "name": "price",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "capacity",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "description",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Create Successfully",
+            "headers": {}
+          },
+          "400": {
+            "description": "All data is required!",
+            "headers": {}
+          },
+          "422": {
+            "description": "Failed",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/cars/{id}": {
+      "get": {
+        "summary": "GET Car By Id",
+        "description": "GET Car By Id",
+        "tags": [
+          "Cars"
+        ],
+        "operationId": "GETCarById",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {}
+          },
+          "404": {
+            "description": "Car not found",
+            "headers": {}
+          },
+          "422": {
+            "description": "Failed",
+            "headers": {}
+          }
+        },
+        "security": []
+      },
+      "put": {
+        "summary": "(Akses untuk Super Admin dan Admin)",
+        "description": "Update Car (Akses untuk Super Admin dan Admin)",
+        "tags": [
+          "Cars"
+        ],
+        "operationId": "UpdateCar(AksesuntukSuperAdmindanAdmin)",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "name",
+            "in": "formData",
+            "required": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "plate",
+            "in": "formData",
+            "required": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "image",
+            "in": "formData",
+            "required": false,
+            "type": "file",
+            "description": ""
+          },
+          {
+            "name": "price",
+            "in": "formData",
+            "required": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "capacity",
+            "in": "formData",
+            "required": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "description",
+            "in": "formData",
+            "required": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated Successfully",
+            "headers": {}
+          },
+          "404": {
+            "description": "Car not found",
+            "headers": {}
+          },
+          "422": {
+            "description": "Failed",
+            "headers": {}
+          }
+        },
+        "security": []
+      },
+      "delete": {
+        "summary": "(Akses hanya untuk Super Admin dan Admin)",
+        "description": "Delete Car - (Akses hanya untuk Super Admin dan Admin)",
+        "tags": [
+          "Cars"
+        ],
+        "operationId": "DeleteCar-(AkseshanyauntukSuperAdmindanAdmin)",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted Successfully",
+            "headers": {}
+          },
+          "404": {
+            "description": "Car not found",
+            "headers": {}
+          },
+          "422": {
+            "description": "Failed",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/deleted-cars": {
+      "get": {
+        "summary": "(Akses hanya untuk Super Admin)",
+        "description": "GET - Check Deleted By - (Akses hanya untuk Super Admin)",
+        "tags": [
+          "Cars"
+        ],
+        "operationId": "CheckDeletedBy-(AkseshanyauntukSuperAdmin)",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {}
+          },
+          "400": {
+            "description": "Failed",
+            "headers": {}
+          },
+          "404": {
+            "description": "Car is Empty, Please Add Cars",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    }
+  },
+  "definitions": {
+    "RegistrasiRequest": {
+      "title": "RegistrasiRequest",
+      "example": {
+        "email": "khairil@gmail.com",
+        "password": "khairil123"
+      },
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "email",
+        "password"
+      ]
+    },
+    "LoginRequest": {
+      "title": "LoginRequest",
+      "example": {
+        "email": "superadmin@gmail.com",
+        "password": "superadmin123"
+      },
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "email",
+        "password"
+      ]
+    },
+    "CreateAdmin-(AkseshanyauntukSuperAdmin)Request": {
+      "title": "CreateAdmin-(AkseshanyauntukSuperAdmin)Request",
+      "example": {
+        "email": "admin2@gmail.com",
+        "password": "admin123"
+      },
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "email",
+        "password"
+      ]
+    }
+  },
+  "security": [],
+  "tags": [
+    {
+      "name": "Auth"
+    },
+    {
+      "name": "Cars"
+    }
+  ]
+}
