@@ -4,7 +4,7 @@ const { typeusers } = require("../../../models");
 
 
 const listAllRoles = async (req, res) => {
-    typeusers.findAll()
+    typeusers.findAll({attributes:['id','type']})
     .then((role) => {
         res.status(200).json({
             status: "List All Roles",

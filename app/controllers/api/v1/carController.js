@@ -1,7 +1,6 @@
 const carService = require("../../../services/carService");
 const userService = require("../../../services/userService");
 const operationsService = require("../../../services/operationsService");
-const { listAllRoles } = require("./userController");
 const { operations, typeusers } = require("../../../models");
 const fs = require("fs");
 const path = require("path");
@@ -18,7 +17,7 @@ module.exports = {
                 });
                 return;
             }
-            const roles = await typeusers.findAll();
+            const roles = await typeusers.findAll({attributes:['id','type']});
             res.status(200).json({
                 status: "OK",
                 cars,
@@ -48,7 +47,7 @@ module.exports = {
                 id: user.id,
                 email: user.email,
             };
-            const roles = await typeusers.findAll();
+            const roles = await typeusers.findAll({attributes:['id','type']});
             const data = {
                 car,
                 userInfo,
@@ -119,7 +118,7 @@ module.exports = {
                 id: user.id,
                 email: user.email,
             };
-            const roles = await typeusers.findAll();
+            const roles = await typeusers.findAll({attributes:['id','type']});
             const data = {
                 car,
                 operations,
@@ -167,7 +166,7 @@ module.exports = {
             };
             // Get car info
             const carUpdated = await carService.get(req.params.id);
-            const roles = await typeusers.findAll();
+            const roles = await typeusers.findAll({attributes:['id','type']});
             const data = {
                 car: carUpdated,
                 userInfo,
@@ -208,7 +207,7 @@ module.exports = {
             });
             res.status(200).json({
                 status: "OK",
-                message: "Car has been deleted successfully",
+                message: "Car Deleted successfully",
             });
         } catch (error) {
             res.status(422).json({
