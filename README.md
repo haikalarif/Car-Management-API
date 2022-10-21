@@ -38,4 +38,4 @@ Email    : superadmin@gmail.com
 Password : superadmin123
 ```
 ## Entity Relationship Diagram (ERD)
-![This is an image](./ERD-ch6.png)
+![This is an image](/ERD-ch6.png)
