@@ -149,7 +149,7 @@ module.exports = {
             }
             const imgLength = Object.keys(car.image).length
             if(imgLength > 1) {
-                fs.unlinkSync(path.join(__dirname, "../../../public/img",car.image));
+                fs.unlinkSync(path.join(__dirname, "../../../public/img/",car.image));
             }
             await carService.update(req.params.id, req.body);
             await operationsService.update(req.params.id, {
@@ -198,7 +198,7 @@ module.exports = {
             }
             const imgLength = Object.keys(car.image).length
             if(imgLength > 1) {
-                fs.unlinkSync(path.join(__dirname, "../../../public/img",car.image));
+                fs.unlinkSync(path.join(__dirname, "../../../public/img/",car.image));
             }
             await carService.delete(req.params.id);
             await operationsService.update(req.params.id, {
