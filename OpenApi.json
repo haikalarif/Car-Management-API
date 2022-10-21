@@ -3,7 +3,7 @@
   "info": {
     "version": "1.0",
     "title": "Car Management API",
-    "description": "Open API Documentation",
+    "description": "Open API Documentation - (Challenge chapter 06 Binar By M. Haikal Arif Khairil)",
     "contact": {}
   },
   "host": "localhost:3000",
@@ -206,7 +206,7 @@
     },
     "/list-admin": {
       "get": {
-        "summary": "GET - List All Admin",
+        "summary": "(Akses hanya untuk Super Admin)",
         "description": "GET - List All Admin",
         "tags": [
           "Auth"
@@ -240,7 +240,7 @@
     },
     "/list-member": {
       "get": {
-        "summary": "GET - List Member",
+        "summary": "(Akses hanya untuk Super Admin dan Admin)",
         "description": "GET - List Member",
         "tags": [
           "Auth"
@@ -274,7 +274,7 @@
     },
     "/list-typeuser": {
       "get": {
-        "summary": "GET - List All Roles",
+        "summary": "(Akses hanya untuk Super Admin dan Admin)",
         "description": "GET - List All Roles",
         "tags": [
           "Auth"

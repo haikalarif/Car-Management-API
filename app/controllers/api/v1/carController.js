@@ -48,7 +48,7 @@ module.exports = {
                 id: user.id,
                 email: user.email,
             };
-            const roles = await listAllRoles();
+            const roles = await typeusers.findAll();
             const data = {
                 car,
                 userInfo,
@@ -119,7 +119,7 @@ module.exports = {
                 id: user.id,
                 email: user.email,
             };
-            const roles = await listAllRoles();
+            const roles = await typeusers.findAll();
             const data = {
                 car,
                 operations,
@@ -167,7 +167,7 @@ module.exports = {
             };
             // Get car info
             const carUpdated = await carService.get(req.params.id);
-            const roles = await listAllRoles();
+            const roles = await typeusers.findAll();
             const data = {
                 car: carUpdated,
                 userInfo,
