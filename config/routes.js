@@ -34,8 +34,6 @@ apiRouter.get(prefix + "/list-users", controllers.api.v1.authController.authoriz
 apiRouter.get(prefix + "/list-admin", controllers.api.v1.authController.authorize(1), controllers.api.v1.userController.listAdmin);
 apiRouter.get(prefix + "/list-member", controllers.api.v1.authController.authorize(1, 2), controllers.api.v1.userController.listMember);
 apiRouter.post(prefix + "/add-admin", controllers.api.v1.authController.authorize(1), controllers.api.v1.userController.createAdmin);
-// apiRouter.put(prefix + "/update-admin/:id", controllers.api.v1.authController.authorize(1), controllers.api.v1.userController.updateAdmin);
-// apiRouter.delete(prefix + "/delete-admin/:id", controllers.api.v1.authController.authorize(1), controllers.api.v1.userController.deleteAdmin);
 
 // whoAmI -> check current user
 apiRouter.get(prefix + "/whoami", controllers.api.v1.authController.authorize(1, 2, 3), controllers.api.v1.authController.whoAmI);
@@ -52,7 +50,6 @@ apiRouter.get(prefix + "/deleted-cars", controllers.api.v1.authController.author
 
 // Create Type user (roles) yang hanya dapat dilakukan oleh "Super Admin"
 apiRouter.get(prefix + "/list-typeuser", controllers.api.v1.authController.authorize(1, 2), controllers.api.v1.userController.listAllRoles);
-// apiRouter.post(prefix + "/typeuser", controllers.api.v1.authController.authorize(1), controllers.api.v1.userController.createType);
 
 // Open API
 apiRouter.get(prefix + "/docs/swagger.json", (req, res) => {
